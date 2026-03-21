@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ליאור סורין (שבוטה)</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0c1830;
+      --panel: rgba(255,255,255,0.08);
+      --panel-strong: rgba(255,255,255,0.12);
+      --text: #f4f7ff;
+      --muted: #b7c4de;
+      --accent: #4da3ff;
+      --accent-2: #7d5cff;
+      --accent-3: #00d7b8;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 18px 60px rgba(0,0,0,0.35);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(77,163,255,0.18), transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(125,92,255,0.18), transparent 24%),
+        radial-gradient(circle at 50% 80%, rgba(0,215,184,0.10), transparent 20%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(3, 8, 17, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: .22s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero {
+      padding: 58px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-visual,
+    .card,
+    .timeline-item,
+    .social-card,
+    .gallery-card,
+    .fact-card,
+    .info-banner {
+      border-radius: var(--radius);
+    }
+
+    .hero-copy {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      top: -60px;
+      left: -50px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,92,255,0.35), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      color: #d9e5ff;
+      border: 1px solid rgba(255,255,255,0.10);
+      font-size: .94rem;
+    }
+
+    h1, h2, h3 { margin: 0 0 12px; }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.7rem);
+      line-height: 1.02;
+      margin-top: 16px;
+      letter-spacing: -.02em;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.9;
+      max-width: 62ch;
+      margin: 0 0 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 16px 30px rgba(77,163,255,0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(18px);
+    }
+
+    .hero-visual::before {
+      width: 190px;
+      height: 190px;
+      background: rgba(77,163,255,0.22);
+      top: 8%;
+      right: 10%;
+    }
+
+    .hero-visual::after {
+      width: 220px;
+      height: 220px;
+      background: rgba(125,92,255,0.20);
+      bottom: 0;
+      left: 0;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: min(100%, 360px);
+      z-index: 1;
+      animation: floatPhoto 4s ease-in-out infinite;
+    }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+
+    .hero-stat {
+      position: absolute;
+      min-width: 150px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      font-size: .95rem;
+    }
+
+    .stat-top {
+      top: 16px;
+      left: -20px;
+    }
+
+    .stat-bottom {
+      bottom: 18px;
+      right: -18px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+      font-size: .88rem;
+    }
+
+    .stat-value {
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .info-banner {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255, 209, 102, 0.08);
+      color: #ffe7aa;
+      line-height: 1.8;
+    }
+
+    section { padding: 22px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+    }
+
+    .section-sub {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 70ch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card, .fact-card, .social-card, .gallery-card, .timeline-item {
+      padding: 22px;
+    }
+
+    .card p,
+    .fact-card p,
+    .timeline-item p,
+    .social-card p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    .fact-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fact-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -30px auto;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(77,163,255,0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .fact-kicker {
+      display: inline-block;
+      color: #dfe9ff;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.09);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .85rem;
+      margin-bottom: 12px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .timeline-year {
+      position: sticky;
+      top: 90px;
+      border-radius: 16px;
+      padding: 12px 14px;
+      text-align: center;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(77,163,255,0.20), rgba(125,92,255,0.20));
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .gallery-card {
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      min-height: 260px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .28s ease, opacity .28s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.06);
+      opacity: .95;
+    }
+
+    .gallery-card::after {
+      content: "הגדלה";
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: .84rem;
+      color: white;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .social-card {
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .social-card:hover {
+      transform: translateY(-3px);
+      background: var(--panel-strong);
+    }
+
+    .social-name {
+      display: block;
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .social-handle {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .sound-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .sound-btn {
+      border: none;
+      cursor: pointer;
+      padding: 16px 22px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ff8d2a, #ff4e80);
+      color: white;
+      font-size: 1rem;
+      font-weight: 800;
+      box-shadow: 0 16px 32px rgba(255, 78, 128, 0.28);
+      transition: transform .18s ease;
+    }
+
+    .sound-btn:hover { transform: translateY(-2px) scale(1.01); }
+
+    .sound-status {
+      color: var(--muted);
+      min-height: 22px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(2,7,16,0.84);
+      padding: 22px;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      width: min(1100px, 100%);
+      display: grid;
+      grid-template-columns: 74px 1fr 74px;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .lightbox-view {
+      display: grid;
+      place-items: center;
+    }
+
+    .lightbox-view img {
+      max-width: 100%;
+      max-height: 84vh;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.45);
+    }
+
+    .lightbox-btn,
+    .lightbox-close {
+      border: none;
+      cursor: pointer;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      font-size: 1.35rem;
+      transition: .18s ease;
+    }
+
+    .lightbox-btn:hover,
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-1px);
+    }
+
+    .lightbox-top {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .lightbox-counter {
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @keyframes floatPhoto {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .gallery-grid,
+      .social-grid,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-year {
+        position: static;
+        width: fit-content;
+      }
+
+      .nav-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 420px;
+      }
+
+      .lightbox-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge">
+          <img src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png" alt="שבוטה" />
+        </div>
+        <span>ליאור סורין • שבוטה</span>
+      </div>
+      <div class="nav-links">
+        <a href="#home">בית</a>
+        <a href="#about">אודות</a>
+        <a href="#timeline">ציר זמן</a>
+        <a href="#gallery">גלריה</a>
+        <a href="#social">רשתות</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-copy glass">
+          <span class="eyebrow">יוצר תוכן • רשתות חברתיות • גלריה בעברית</span>
+          <h1>ליאור סורין<br />("שבוטה")</h1>
+          <p class="lead">
+            עמוד מעריצים מעוצב בעברית על שבוטה, עם גלריית תמונות, רשתות חברתיות, ותקציר נקי של פרטים שחוזרים בדף
+            הסאטירי שנשלח. בגלל שהמקור מלא בהגזמות, בדיחות ותוכן לא אמין, כאן נשמר רק המידע הכללי שאפשר להציג בצורה נורמלית.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#social">לרשתות החברתיות</a>
+            <a class="btn btn-secondary" href="#gallery">לגלריה</a>
+          </div>
+          <div class="info-banner glass">
+            הערה: המקור שעליו האתר מבוסס הוא דף סאטירי. לכן הטקסט כאן מסכם רק חלקים כלליים כמו תחילת פעילות, סוגי תוכן,
+            שירים, משחקים ומפגשי מעריצים, בלי להכניס טענות מופרכות או פוגעניות.
+          </div>
+        </div>
+
+        <div class="hero-visual glass">
+          <div class="hero-photo-wrap">
+            <img class="hero-photo" src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png" alt="שבוטה" />
+            <div class="hero-stat glass stat-top">
+              <span class="stat-label">תחילת פעילות לפי הדף</span>
+              <span class="stat-value">2018</span>
+            </div>
+            <div class="hero-stat glass stat-bottom">
+              <span class="stat-label">סוגי תוכן שמופיעים במקור</span>
+              <span class="stat-value">טיקטוק, יוטיוב, גיימינג</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">אודות</h2>
+          <p class="section-sub">
+            לפי הערך שנשלח, שבוטה מזוהה כיוצר תוכן עם פעילות ברשתות חברתיות, בעיקר טיקטוק ויוטיוב. בדף מתואר שהוא החל
+            לפרסם סרטונים בשנת 2018, ובהמשך העלה גם תוכן גיימינג, ולוגים, שירים וסרטונים עם קהל ועוקבים.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="fact-card glass">
+          <span class="fact-kicker">פעילות ראשונית</span>
+          <h3>תחילת הדרך</h3>
+          <p>
+            בדף נכתב שבשנת 2018 התחילה העלאת סרטונים לטיקטוק, ובהמשך זה הוביל לחשיפה רחבה יותר ולבניית קהל.
+          </p>
+        </article>
+        <article class="fact-card glass">
+          <span class="fact-kicker">תוכן</span>
+          <h3>מה מופיע בערך</h3>
+          <p>
+            החלקים היותר נורמליים בערך מזכירים תוכן בידורי, גיימינג, סרטוני ולוג, מפגשי מעריצים ותוכן שמתפרסם בכמה פלטפורמות.
+          </p>
+        </article>
+        <article class="fact-card glass">
+          <span class="fact-kicker">רשתות</span>
+          <h3>נוכחות דיגיטלית</h3>
+          <p>
+            האתר שקישרת אליו מפנה גם לטיקטוק, אינסטגרם ויוטיוב, ולכן הוספתי כאן כרטיסים מסודרים עם קישורים ישירים לכל עמוד.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">ציר זמן</h2>
+          <p class="section-sub">
+            הנה תקציר נקי של הדברים שאפשר לקחת מהערך בלי להכניס את כל החלקים הטרוליים והמוגזמים.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item glass">
+          <div class="timeline-year">2018</div>
+          <div>
+            <h3>כניסה לטיקטוק</h3>
+            <p>
+              הערך מציין שבשנה הזאת התחילה פעילות בטיקטוק. בנוסף הוא קושר את התקופה הזאת גם לעלייה בחשיפה ולמפגשי מעריצים.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item glass">
+          <div class="timeline-year">2019–2021</div>
+          <div>
+            <h3>גיימינג, ולוגים ושירים</h3>
+            <p>
+              לפי הדף, בשנים האלה פורסמו משחקי פיפא, ולוגים, קטעי קלאש רויאל וגם שירים שמוזכרים בשם בערך, כולל "שבותה" ו"ככה זה".
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item glass">
+          <div class="timeline-year">2022</div>
+          <div>
+            <h3>תוכן סביב כדורגל</h3>
+            <p>
+              בדף יש תיאור של מעבר לתוכן שמזוהה עם כדורגל וסקילים, לצד העלאות נוספות לערוץ היוטיוב.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item glass">
+          <div class="timeline-year">2023</div>
+          <div>
+            <h3>באולינג, כושר ומפגשים</h3>
+            <p>
+              החלקים הסבירים יותר בערך מזכירים מפגשי מעריצים בבאולינג, תיעוד של מפגשים ברחוב וגם תוכן שקשור לכושר.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">גלריה</h2>
+          <p class="section-sub">לחיצה על כל תמונה תפתח אותה בגדול.</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <button class="gallery-card" data-src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png"><img src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png" alt="שבוטה 1" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/r2yZ69Dk/2026-02-26-205200.png"><img src="https://i.ibb.co/r2yZ69Dk/2026-02-26-205200.png" alt="שבוטה 2" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/JFnWM4n2/2026-02-26-205203.png"><img src="https://i.ibb.co/JFnWM4n2/2026-02-26-205203.png" alt="שבוטה 3" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/Ddwf6hK/2026-02-26-205207.png"><img src="https://i.ibb.co/Ddwf6hK/2026-02-26-205207.png" alt="שבוטה 4" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/RpmYt2LH/2026-02-26-205213.png"><img src="https://i.ibb.co/RpmYt2LH/2026-02-26-205213.png" alt="שבוטה 5" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/gL3y1gkT/2026-02-26-205216.png"><img src="https://i.ibb.co/gL3y1gkT/2026-02-26-205216.png" alt="שבוטה 6" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/jkTFJJKq/2026-02-26-205220.png"><img src="https://i.ibb.co/jkTFJJKq/2026-02-26-205220.png" alt="שבוטה 7" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/tM0DN82G/2026-02-26-205224.png"><img src="https://i.ibb.co/tM0DN82G/2026-02-26-205224.png" alt="שבוטה 8" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/N2WJC6WM/2026-02-26-205229.png"><img src="https://i.ibb.co/N2WJC6WM/2026-02-26-205229.png" alt="שבוטה 9" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/q30mvNCR/2026-02-26-205236.png"><img src="https://i.ibb.co/q30mvNCR/2026-02-26-205236.png" alt="שבוטה 10" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/BKKR0QPz/2026-02-26-205239.png"><img src="https://i.ibb.co/BKKR0QPz/2026-02-26-205239.png" alt="שבוטה 11" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/h1gRgpFb/2026-02-26-205241.png"><img src="https://i.ibb.co/h1gRgpFb/2026-02-26-205241.png" alt="שבוטה 12" /></button>
+      </div>
+    </section>
+
+    <section id="social">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">רשתות חברתיות</h2>
+          <p class="section-sub">מעבר מהיר לעמודים שקישרת אליהם.</p>
+        </div>
+      </div>
+
+      <div class="social-grid">
+        <a class="social-card glass" href="https://www.tiktok.com/@mrmistarshabota" target="_blank" rel="noopener noreferrer">
+          <span class="social-name">טיקטוק</span>
+          <span class="social-handle">@mrmistarshabota</span>
+          <span class="btn btn-secondary">פתיחה</span>
+        </a>
+        <a class="social-card glass" href="https://www.instagram.com/liormastershabota/" target="_blank" rel="noopener noreferrer">
+          <span class="social-name">אינסטגרם</span>
+          <span class="social-handle">@liormastershabota</span>
+          <span class="btn btn-secondary">פתיחה</span>
+        </a>
+        <a class="social-card glass" href="https://www.youtube.com/@Shabota2026" target="_blank" rel="noopener noreferrer">
+          <span class="social-name">יוטיוב</span>
+          <span class="social-handle">@Shabota2026</span>
+          <span class="btn btn-secondary">פתיחה</span>
+        </a>
+        <a class="social-card glass" href="https://www.youtube.com/@SAHBOTA" target="_blank" rel="noopener noreferrer">
+          <span class="social-name">יוטיוב גיימינג</span>
+          <span class="social-handle">@SAHBOTA</span>
+          <span class="btn btn-secondary">פתיחה</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="sound">
+      <div class="card glass">
+        <div class="sound-box">
+          <div>
+            <h2 class="section-title" style="font-size:1.5rem; margin-bottom:6px;">כפתור סאונד</h2>
+            <div class="sound-status" id="soundStatus">לוחצים ומקבלים סאונד דמו דרך הדפדפן.</div>
+          </div>
+          <button class="sound-btn" id="soundBtn">השמע קול</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    נבנה בעברית מלאה, עם עיצוב משודרג, גלריה ותוכן מסונן מהמקור.
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-top">
+      <div class="lightbox-counter" id="lightboxCounter">1 / 12</div>
+      <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">✕</button>
+    </div>
+    <div class="lightbox-inner">
+      <button class="lightbox-btn" id="prevBtn" aria-label="הקודם">❮</button>
+      <div class="lightbox-view">
+        <img id="lightboxImage" src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png" alt="שבוטה מוגדל" />
+      </div>
+      <button class="lightbox-btn" id="nextBtn" aria-label="הבא">❯</button>
+    </div>
+  </div>
+
+  <script>
+    // =========================
+    // כפתור סאונד דמו
+    // =========================
+    const soundBtn = document.getElementById('soundBtn');
+    const soundStatus = document.getElementById('soundStatus');
+
+    function playDemoTone() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) {
+        soundStatus.textContent = 'הדפדפן הזה לא תומך בהשמעת דמו.';
+        return;
+      }
+
+      const ctx = new AudioContextClass();
+      const oscillator = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      oscillator.type = 'square';
+      oscillator.frequency.setValueAtTime(420, ctx.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.25);
+
+      gain.gain.setValueAtTime(0.001, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.15, ctx.currentTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+
+      oscillator.connect(gain);
+      gain.connect(ctx.destination);
+      oscillator.start();
+      oscillator.stop(ctx.currentTime + 0.36);
+
+      soundStatus.textContent = 'נוגן סאונד דמו. אפשר להחליף אחר כך לקובץ MP3 אמיתי.';
+    }
+
+    soundBtn.addEventListener('click', playDemoTone);
+
+    // =========================
+    // גלריה + לייטבוקס
+    // =========================
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-card'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+
+    function updateLightbox() {
+      const total = galleryItems.length;
+      const src = galleryItems[currentIndex].getAttribute('data-src');
+      lightboxImage.src = src;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${total}`;
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      updateLightbox();
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      updateLightbox();
+    }
+
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => openLightbox(index));
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'ArrowLeft') showNext();
+      if (event.key === 'ArrowRight') showPrev();
+    });
+  </script>
+</body>
+</html>
