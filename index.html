@@ -9,12 +9,10 @@
       --bg: #07111f;
       --bg-2: #0c1830;
       --panel: rgba(255,255,255,0.08);
-      --panel-strong: rgba(255,255,255,0.12);
       --text: #f4f7ff;
       --muted: #b7c4de;
       --accent: #4da3ff;
       --accent-2: #7d5cff;
-      --accent-3: #00d7b8;
       --border: rgba(255,255,255,0.12);
       --shadow: 0 18px 60px rgba(0,0,0,0.35);
       --radius: 24px;
@@ -31,7 +29,7 @@
       background:
         radial-gradient(circle at 20% 10%, rgba(77,163,255,0.18), transparent 22%),
         radial-gradient(circle at 85% 15%, rgba(125,92,255,0.18), transparent 24%),
-        radial-gradient(circle at 50% 80%, rgba(0,215,184,0.10), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(255,140,0,0.08), transparent 20%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       min-height: 100vh;
       overflow-x: hidden;
@@ -39,6 +37,7 @@
 
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
+    button { font: inherit; }
 
     .container {
       width: min(var(--max), calc(100% - 28px));
@@ -96,10 +95,7 @@
       color: var(--text);
       transition: .2s ease;
       font-weight: 800;
-      position: relative;
-      z-index: 5;
       box-shadow: 0 10px 26px rgba(0,0,0,0.22);
-      animation: glowPulse 3s ease-in-out infinite;
     }
 
     .top-social-link:hover {
@@ -114,7 +110,6 @@
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       box-shadow: 0 0 16px rgba(77,163,255,0.7);
       flex: 0 0 auto;
-      animation: glowPulse 2.4s ease-in-out infinite;
     }
 
     .nav {
@@ -175,6 +170,11 @@
       background: rgba(255,255,255,0.08);
     }
 
+    main {
+      margin-top: 140px;
+      padding-bottom: 40px;
+    }
+
     .hero {
       padding: 24px 0 20px;
     }
@@ -188,11 +188,9 @@
 
     .hero-copy,
     .hero-visual,
-    .card,
-    .timeline-item,
     .social-card,
     .gallery-card,
-    .fact-card {
+    .video-card {
       border-radius: var(--radius);
     }
 
@@ -334,7 +332,6 @@
       min-height: 520px;
       display: grid;
       place-items: center;
-      animation-delay: .08s;
     }
 
     .hero-visual::before,
@@ -437,39 +434,6 @@
       background: #000;
     }
 
-    /* תגובות UI יפה */
-    .comment-box-ui {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:14px 18px;
-      border-radius:999px;
-      background: rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.15);
-      margin-bottom:16px;
-      cursor:pointer;
-      transition:0.2s;
-    }
-
-    .comment-box-ui:hover {
-      background: rgba(255,255,255,0.12);
-    }
-
-    .comment-input-fake {
-      flex:1;
-      color: var(--muted);
-    }
-
-    .comment-btn {
-      background:black;
-      color:white;
-      border:none;
-      padding:10px 16px;
-      border-radius:999px;
-      font-weight:700;
-      cursor:pointer;
-    }
-
     section { padding: 22px 0; }
 
     .section-head {
@@ -490,75 +454,6 @@
       color: var(--muted);
       line-height: 1.8;
       max-width: 70ch;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .card, .fact-card, .social-card, .gallery-card, .timeline-item {
-      padding: 22px;
-    }
-
-    .card p,
-    .fact-card p,
-    .timeline-item p,
-    .social-card p {
-      color: var(--muted);
-      line-height: 1.85;
-      margin: 0;
-    }
-
-    .fact-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .fact-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -30px -30px auto;
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(77,163,255,0.16), transparent 68%);
-      pointer-events: none;
-    }
-
-    .fact-kicker {
-      display: inline-block;
-      color: #dfe9ff;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.09);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: .85rem;
-      margin-bottom: 12px;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .timeline-year {
-      position: sticky;
-      top: 90px;
-      border-radius: 16px;
-      padding: 12px 14px;
-      text-align: center;
-      font-weight: 800;
-      background: linear-gradient(135deg, rgba(77,163,255,0.20), rgba(125,92,255,0.20));
-      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .gallery-grid {
@@ -663,31 +558,6 @@
       font-size: 1rem;
     }
 
-    .sound-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .sound-btn {
-      border: none;
-      cursor: pointer;
-      padding: 16px 22px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #ff8d2a, #ff4e80);
-      color: white;
-      font-size: 1rem;
-      font-weight: 800;
-      box-shadow: 0 16px 32px rgba(255, 78, 128, 0.28);
-      transition: transform .18s ease;
-      animation: glowPulse 3s ease-in-out infinite;
-    }
-
-    .sound-btn:hover { transform: translateY(-2px) scale(1.01); }
-    .sound-status { color: var(--muted); min-height: 22px; }
-
     .lightbox {
       position: fixed;
       inset: 0;
@@ -764,25 +634,32 @@
       padding: 34px 0 50px;
       color: var(--muted);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(255,140,0,0.15));
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,140,0,0.5), transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
     }
 
     .hero-copy,
     .hero-visual,
-    .fact-card,
-    .timeline-item,
     .gallery-card,
     .social-card,
-    .card {
+    .video-card {
       animation: fadeUp .8s ease both;
     }
 
-    .fact-card:nth-child(1) { animation-delay: .05s; }
-    .fact-card:nth-child(2) { animation-delay: .12s; }
-    .fact-card:nth-child(3) { animation-delay: .19s; }
-    .timeline-item:nth-child(1) { animation-delay: .04s; }
-    .timeline-item:nth-child(2) { animation-delay: .11s; }
-    .timeline-item:nth-child(3) { animation-delay: .18s; }
-    .timeline-item:nth-child(4) { animation-delay: .25s; }
     .gallery-card:nth-child(odd) { animation-delay: .06s; }
     .gallery-card:nth-child(even) { animation-delay: .12s; }
 
@@ -827,16 +704,9 @@
 
     @media (max-width: 980px) {
       .hero-grid,
-      .grid-3,
       .gallery-grid,
-      .social-grid,
-      .timeline-item {
+      .social-grid {
         grid-template-columns: 1fr;
-      }
-
-      .timeline-year {
-        position: static;
-        width: fit-content;
       }
 
       .top-social-inner,
@@ -935,16 +805,6 @@
         font-size: 1rem;
       }
 
-      .sound-box {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .sound-btn {
-        width: 100%;
-        min-height: 54px;
-      }
-
       .video-card video,
       video {
         height: auto !important;
@@ -972,7 +832,7 @@
         transform: none !important;
       }
 
-      main[style] {
+      main {
         margin-top: 18px !important;
       }
 
@@ -990,10 +850,7 @@
 
       .hero-copy,
       .hero-visual,
-      .card,
-      .timeline-item,
-      .social-card,
-      .fact-card {
+      .social-card {
         border-radius: 18px;
       }
 
@@ -1068,9 +925,6 @@
       }
 
       .section-sub,
-      .card p,
-      .fact-card p,
-      .timeline-item p,
       .social-card p {
         line-height: 1.7;
       }
@@ -1166,32 +1020,29 @@
       </div>
       <div class="nav-links">
         <a href="#home">בית</a>
-        <a href="#about">אודות</a>
-        <a href="#timeline">ציר זמן</a>
-        <a href="#gallery">גלריה</a>
         <a href="#social">רשתות</a>
-        <a href="#comments">תגובות</a>
+        <a href="#photos">תמונות</a>
       </div>
     </div>
   </nav>
 
-  <main class="container" style="margin-top:140px;">
+  <main class="container">
     <section class="hero" id="home">
       <div class="hero-grid">
         <div class="hero-copy glass">
-          <span class="eyebrow">יוצר תוכן • רשתות חברתיות • גלריה בעברית</span>
+          <span class="eyebrow">יוצר תוכן • טיקטוק • יוטיוב • אינסטגרם</span>
           <h1>
             <span class="glow-title" data-text="ליאור סורין">ליאור סורין</span><br />
             <span class="glow-title" data-text="שבוטה">("שבוטה")</span>
           </h1>
           <p class="lead">
-            ליאור סורין, הידוע בכינוי "שבוטה", הוא יוצר תוכן ישראלי הפעיל בעיקר בטיקטוק, יוטיוב ואינסטגרם.
+            עמוד ראשי נקי ופשוט עם הסרטון, הרשתות החברתיות וכמה תמונות נבחרות.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary btn-network" href="https://www.tiktok.com/@mrmistarshabota" target="_blank" rel="noopener noreferrer">טיקטוק</a>
             <a class="btn btn-secondary btn-network" href="https://www.instagram.com/liormastershabota/" target="_blank" rel="noopener noreferrer">אינסטגרם</a>
             <a class="btn btn-secondary btn-network" href="https://www.youtube.com/@Shabota2026" target="_blank" rel="noopener noreferrer">יוטיוב</a>
-            <a class="btn btn-secondary" href="#gallery">לגלריה</a>
+            <a class="btn btn-secondary btn-network" href="https://www.youtube.com/@SAHBOTA" target="_blank" rel="noopener noreferrer">יוטיוב גיימינג</a>
           </div>
 
           <div class="video-card">
@@ -1201,8 +1052,8 @@
             </video>
             <div style="padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
               <div>
-                <div style="font-weight:800; color:var(--text); margin-bottom:6px;">נגן וידאו בתוך האתר</div>
-                <div style="color:var(--muted); font-size:.96rem;">לחיצה על Play תנגן את הסרטון כאן בתוך האתר.</div>
+                <div style="font-weight:800; color:var(--text); margin-bottom:6px;">סרטון ראשי</div>
+                <div style="color:var(--muted); font-size:.96rem;">אפשר לנגן כאן באתר או לפתוח בטיקטוק.</div>
               </div>
               <a class="btn btn-primary" href="https://www.tiktok.com/@mrmistarshabota/video/7592264654773046536" target="_blank" rel="noopener noreferrer">פתח בטיקטוק</a>
             </div>
@@ -1214,113 +1065,15 @@
             <div class="hero-ring"></div>
             <img class="hero-photo" src="https://i.ibb.co/r2yZ69Dk/2026-02-26-205200.png" alt="שבוטה" />
             <div class="hero-stat glass stat-top">
-              <span class="stat-label">תחילת פעילות</span>
-              <span class="stat-value">2018</span>
+              <span class="stat-label">עמוד ראשי</span>
+              <span class="stat-value">רשתות + וידאו</span>
             </div>
             <div class="hero-stat glass stat-bottom">
-              <span class="stat-label">פלטפורמות</span>
-              <span class="stat-value">טיקטוק, יוטיוב, גיימינג</span>
+              <span class="stat-label">תוכן</span>
+              <span class="stat-value">תמונות נבחרות</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">אודות</h2>
-          <p class="section-sub">
-            ליאור משתמש ברשתות החברתיות כדי לבטא את עצמו, לשתף את החיים שלו ולהתחבר לקהל רחב.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <article class="fact-card glass">
-          <span class="fact-kicker">רקע</span>
-          <h3>יוצר תוכן</h3>
-          <p>ליאור פעיל בעיקר בטיקטוק, יוטיוב ואינסטגרם ומעלה תוכן אישי ובידורי.</p>
-        </article>
-
-        <article class="fact-card glass">
-          <span class="fact-kicker">פרסום</span>
-          <h3>שיר "שבוטה"</h3>
-          <p>השיר "שבוטה" הפך לאחד הדברים המזוהים איתו וצבר צפיות רבות ברשת.</p>
-        </article>
-
-        <article class="fact-card glass">
-          <span class="fact-kicker">תוכן</span>
-          <h3>מה הוא מעלה</h3>
-          <p>התוכן כולל סרטונים יומיומיים, מוזיקה, שיתופי פעולה והופעות מול קהל.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="timeline">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">ציר זמן</h2>
-          <p class="section-sub">תקציר קצר ונקי של ההתפתחות שלו ברשת.</p>
-        </div>
-      </div>
-
-      <div class="timeline">
-        <article class="timeline-item glass">
-          <div class="timeline-year">2018</div>
-          <div>
-            <h3>כניסה לטיקטוק</h3>
-            <p>תחילת פעילות בטיקטוק ובניית קהל.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item glass">
-          <div class="timeline-year">2019–2021</div>
-          <div>
-            <h3>גיימינג, ולוגים ושירים</h3>
-            <p>תוכן בידורי, משחקים, קטעי וידאו ושירים.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item glass">
-          <div class="timeline-year">2022</div>
-          <div>
-            <h3>הרחבת התוכן</h3>
-            <p>המשך פעילות ביוטיוב וברשתות עם עוד סרטונים ותוכן מגוון.</p>
-          </div>
-        </article>
-
-        <article class="timeline-item glass">
-          <div class="timeline-year">2023+</div>
-          <div>
-            <h3>קהל ונוכחות ברשת</h3>
-            <p>המשך הופעות, תוכן אישי וחיבור לקהילה ולעוקבים.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">גלריה</h2>
-          <p class="section-sub">לחיצה על כל תמונה תפתח אותה בגדול.</p>
-        </div>
-      </div>
-
-      <div class="gallery-grid" id="galleryGrid">
-        <button class="gallery-card" data-src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png"><img src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png" alt="שבוטה 1" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/r2yZ69Dk/2026-02-26-205200.png"><img src="https://i.ibb.co/r2yZ69Dk/2026-02-26-205200.png" alt="שבוטה 2" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/JFnWM4n2/2026-02-26-205203.png"><img src="https://i.ibb.co/JFnWM4n2/2026-02-26-205203.png" alt="שבוטה 3" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/Ddwf6hK/2026-02-26-205207.png"><img src="https://i.ibb.co/Ddwf6hK/2026-02-26-205207.png" alt="שבוטה 4" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/RpmYt2LH/2026-02-26-205213.png"><img src="https://i.ibb.co/RpmYt2LH/2026-02-26-205213.png" alt="שבוטה 5" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/gL3y1gkT/2026-02-26-205216.png"><img src="https://i.ibb.co/gL3y1gkT/2026-02-26-205216.png" alt="שבוטה 6" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/jkTFJJKq/2026-02-26-205220.png"><img src="https://i.ibb.co/jkTFJJKq/2026-02-26-205220.png" alt="שבוטה 7" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/tM0DN82G/2026-02-26-205224.png"><img src="https://i.ibb.co/tM0DN82G/2026-02-26-205224.png" alt="שבוטה 8" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/N2WJC6WM/2026-02-26-205229.png"><img src="https://i.ibb.co/N2WJC6WM/2026-02-26-205229.png" alt="שבוטה 9" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/q30mvNCR/2026-02-26-205236.png"><img src="https://i.ibb.co/q30mvNCR/2026-02-26-205236.png" alt="שבוטה 10" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/BKKR0QPz/2026-02-26-205239.png"><img src="https://i.ibb.co/BKKR0QPz/2026-02-26-205239.png" alt="שבוטה 11" /></button>
-        <button class="gallery-card" data-src="https://i.ibb.co/h1gRgpFb/2026-02-26-205241.png"><img src="https://i.ibb.co/h1gRgpFb/2026-02-26-205241.png" alt="שבוטה 12" /></button>
       </div>
     </section>
 
@@ -1328,7 +1081,7 @@
       <div class="section-head">
         <div>
           <h2 class="section-title">רשתות חברתיות</h2>
-          <p class="section-sub">לחיצה מהירה ונוחה לכל הרשתות. בטלפון זה מוצג ככרטיסים גדולים וברורים.</p>
+          <p class="section-sub">מעבר מהיר לכל העמודים הרשמיים.</p>
         </div>
       </div>
 
@@ -1354,70 +1107,32 @@
           <span class="btn btn-secondary">פתיחה</span>
         </a>
       </div>
-
-      <div class="card glass" style="margin-top:16px;">
-        <p style="margin-bottom:12px; color: var(--text); font-weight:700;">אם הפריוויו לא נותן ללחוץ, הנה גם הקישורים עצמם:</p>
-        <p><a href="https://www.tiktok.com/@mrmistarshabota" target="_blank" rel="noopener noreferrer">https://www.tiktok.com/@mrmistarshabota</a></p>
-        <p><a href="https://www.instagram.com/liormastershabota/" target="_blank" rel="noopener noreferrer">https://www.instagram.com/liormastershabota/</a></p>
-        <p><a href="https://www.youtube.com/@Shabota2026" target="_blank" rel="noopener noreferrer">https://www.youtube.com/@Shabota2026</a></p>
-        <p><a href="https://www.youtube.com/@SAHBOTA" target="_blank" rel="noopener noreferrer">https://www.youtube.com/@SAHBOTA</a></p>
-      </div>
     </section>
 
-    <section id="comments">
+    <section id="photos">
       <div class="section-head">
         <div>
-          <h2 class="section-title">תגובות</h2>
-          <p class="section-sub">תגובות אמיתיות דרך GitHub Discussions.</p>
+          <h2 class="section-title">תמונות</h2>
+          <p class="section-sub">כמה תמונות נבחרות בלי גלריה גדולה.</p>
         </div>
       </div>
 
-      <div class="card glass" style="padding:18px; overflow:hidden;">
-
-        <div class="comment-box-ui" onclick="scrollToGiscus()">
-          <div class="comment-input-fake">כתוב תגובה...</div>
-          <button class="comment-btn">Comment</button>
-        </div>
-
-        <div id="giscus-container">
-        <script src="https://giscus.app/client.js"
-          data-repo="saerarw3445t/shabota-site"
-          data-repo-id="R_kgDOXXXXXX"
-          data-category="General"
-          data-category-id="DIC_kwDOXXXXXX"
-          data-mapping="pathname"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="dark"
-          data-lang="he"
-          crossorigin="anonymous"
-          async>
-        </script>
-        </div>
-      </div>
-    </section>
-
-    <section id="sound">
-      <div class="card glass">
-        <div class="sound-box">
-          <div>
-            <h2 class="section-title" style="font-size:1.5rem; margin-bottom:6px;">כפתור סאונד</h2>
-            <div class="sound-status" id="soundStatus">לוחצים ומקבלים סאונד דמו דרך הדפדפן.</div>
-          </div>
-          <button class="sound-btn" id="soundBtn">השמע קול</button>
-        </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <button class="gallery-card" data-src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png"><img src="https://i.ibb.co/5gy4yJsD/2026-02-26-205151.png" alt="שבוטה 1" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/r2yZ69Dk/2026-02-26-205200.png"><img src="https://i.ibb.co/r2yZ69Dk/2026-02-26-205200.png" alt="שבוטה 2" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/JFnWM4n2/2026-02-26-205203.png"><img src="https://i.ibb.co/JFnWM4n2/2026-02-26-205203.png" alt="שבוטה 3" /></button>
+        <button class="gallery-card" data-src="https://i.ibb.co/RpmYt2LH/2026-02-26-205213.png"><img src="https://i.ibb.co/RpmYt2LH/2026-02-26-205213.png" alt="שבוטה 4" /></button>
       </div>
     </section>
   </main>
 
   <footer>
-    נבנה בעברית מלאה, עם עיצוב משודרג, גלריה ונגן וידאו.
+    נבנה בעברית מלאה, עם עיצוב משודרג, סרטון ראשי ותמונות נבחרות.
   </footer>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-top">
-      <div class="lightbox-counter" id="lightboxCounter">1 / 12</div>
+      <div class="lightbox-counter" id="lightboxCounter">1 / 4</div>
       <button class="lightbox-close" id="lightboxClose" aria-label="סגירה">✕</button>
     </div>
     <div class="lightbox-inner">
@@ -1430,38 +1145,6 @@
   </div>
 
   <script>
-    const soundBtn = document.getElementById('soundBtn');
-    const soundStatus = document.getElementById('soundStatus');
-
-    function playDemoTone() {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContextClass) {
-        soundStatus.textContent = 'הדפדפן הזה לא תומך בהשמעת דמו.';
-        return;
-      }
-
-      const ctx = new AudioContextClass();
-      const oscillator = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      oscillator.type = 'square';
-      oscillator.frequency.setValueAtTime(420, ctx.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.25);
-
-      gain.gain.setValueAtTime(0.001, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.15, ctx.currentTime + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
-
-      oscillator.connect(gain);
-      gain.connect(ctx.destination);
-      oscillator.start();
-      oscillator.stop(ctx.currentTime + 0.36);
-
-      soundStatus.textContent = 'נוגן סאונד דמו.';
-    }
-
-    soundBtn.addEventListener('click', playDemoTone);
-
     const galleryItems = Array.from(document.querySelectorAll('.gallery-card'));
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
@@ -1534,13 +1217,7 @@
 
     console.assert(!!document.getElementById('galleryGrid'), 'Missing #galleryGrid');
     console.assert(galleryItems.length > 0, 'Gallery should contain at least one image');
-    console.assert(!!soundBtn, 'Missing sound button');
     console.assert(!!lightbox && !!lightboxImage, 'Lightbox elements are missing');
-
-    function scrollToGiscus() {
-      const el = document.getElementById('giscus-container');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
   </script>
 </body>
 </html>
