@@ -437,6 +437,39 @@
       background: #000;
     }
 
+    /* תגובות UI יפה */
+    .comment-box-ui {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 18px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
+      margin-bottom:16px;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .comment-box-ui:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .comment-input-fake {
+      flex:1;
+      color: var(--muted);
+    }
+
+    .comment-btn {
+      background:black;
+      color:white;
+      border:none;
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
     section { padding: 22px 0; }
 
     .section-head {
@@ -926,25 +959,186 @@
         overflow-x: hidden;
       }
 
-      .gallery-grid {
+      .container {
+        width: min(100% - 18px, var(--max));
+      }
+
+      .top-social-bar {
+        position: static;
+      }
+
+      .nav {
+        position: static;
+        transform: none !important;
+      }
+
+      main[style] {
+        margin-top: 18px !important;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .top-social-links {
         grid-template-columns: 1fr 1fr;
       }
 
-      .social-grid {
-        grid-template-columns: 1fr;
+      .nav-links {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-copy,
+      .hero-visual,
+      .card,
+      .timeline-item,
+      .social-card,
+      .fact-card {
+        border-radius: 18px;
       }
 
       .hero-copy {
         padding: 18px 14px;
       }
 
+      .hero-visual {
+        order: -1;
+      }
+
       h1 {
         font-size: 1.9rem;
+        line-height: 1.08;
+      }
+
+      .eyebrow {
+        font-size: .85rem;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .lead {
+        font-size: .98rem;
+      }
+
+      .hero-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo-wrap {
+        width: min(100%, 280px);
+      }
+
+      .hero-stat {
+        min-width: 120px;
+        padding: 10px 12px;
+        font-size: .84rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-card {
+        min-height: 180px;
+        border-radius: 18px;
+      }
+
+      .gallery-card::after {
+        font-size: .76rem;
+        bottom: 8px;
+        left: 8px;
+      }
+
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-card {
+        border-radius: 18px;
       }
 
       .video-card video,
       video {
         min-height: 200px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .section-sub,
+      .card p,
+      .fact-card p,
+      .timeline-item p,
+      .social-card p {
+        line-height: 1.7;
+      }
+
+      .lightbox {
+        padding: 12px;
+      }
+
+      .lightbox-top {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+      }
+
+      .lightbox-btn,
+      .lightbox-close {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: calc(100% - 14px);
+      }
+
+      .top-social-links,
+      .nav-links,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 16px 12px;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .lead {
+        font-size: .94rem;
+      }
+
+      .hero-photo-wrap {
+        width: min(100%, 240px);
+      }
+
+      .stat-top,
+      .stat-bottom {
+        position: static;
+        margin-top: 10px;
+      }
+
+      .hero-photo {
+        border-radius: 22px;
+      }
+
+      .video-card video,
+      video {
+        min-height: 180px;
+      }
+
+      .btn,
+      .top-social-link {
+        min-height: 48px;
+        font-size: .95rem;
       }
     }
   </style>
@@ -976,6 +1170,7 @@
         <a href="#timeline">ציר זמן</a>
         <a href="#gallery">גלריה</a>
         <a href="#social">רשתות</a>
+        <a href="#comments">תגובות</a>
       </div>
     </div>
   </nav>
@@ -1169,6 +1364,40 @@
       </div>
     </section>
 
+    <section id="comments">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">תגובות</h2>
+          <p class="section-sub">תגובות אמיתיות דרך GitHub Discussions.</p>
+        </div>
+      </div>
+
+      <div class="card glass" style="padding:18px; overflow:hidden;">
+
+        <div class="comment-box-ui" onclick="scrollToGiscus()">
+          <div class="comment-input-fake">כתוב תגובה...</div>
+          <button class="comment-btn">Comment</button>
+        </div>
+
+        <div id="giscus-container">
+        <script src="https://giscus.app/client.js"
+          data-repo="saerarw3445t/shabota-site"
+          data-repo-id="R_kgDOXXXXXX"
+          data-category="General"
+          data-category-id="DIC_kwDOXXXXXX"
+          data-mapping="pathname"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="dark"
+          data-lang="he"
+          crossorigin="anonymous"
+          async>
+        </script>
+        </div>
+      </div>
+    </section>
+
     <section id="sound">
       <div class="card glass">
         <div class="sound-box">
@@ -1307,6 +1536,11 @@
     console.assert(galleryItems.length > 0, 'Gallery should contain at least one image');
     console.assert(!!soundBtn, 'Missing sound button');
     console.assert(!!lightbox && !!lightboxImage, 'Lightbox elements are missing');
+
+    function scrollToGiscus() {
+      const el = document.getElementById('giscus-container');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   </script>
 </body>
 </html>
