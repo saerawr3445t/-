@@ -4,180 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>shabota_hebrew_site</title>
-<style@media (max-width: 980px) {
-  .hero-grid,
-  .grid-3,
-  .gallery-grid,
-  .social-grid,
-  .timeline-item {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline-year {
-    position: static;
-    width: fit-content;
-  }
-
-  .top-social-inner,
-  .nav-inner {
-    min-height: auto;
-    padding: 14px 0;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .top-social-title {
-    text-align: center;
-  }
-
-  .top-social-links,
-  .nav-links {
-    justify-content: center;
-  }
-
-  .top-social-links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    width: 100%;
-  }
-
-  .top-social-link {
-    justify-content: center;
-    min-height: 52px;
-    font-size: 1rem;
-  }
-
-  .nav {
-    top: 126px;
-  }
-
-  .nav-links {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    width: 100%;
-  }
-
-  .nav-links a {
-    text-align: center;
-    background: rgba(255,255,255,0.05);
-  }
-
-  .hero {
-    padding-top: 18px;
-  }
-
-  .hero-copy {
-    padding: 24px 18px;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  .lead {
-    font-size: 1rem;
-    line-height: 1.75;
-  }
-
-  .hero-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-  }
-
-  .hero-actions .btn {
-    min-height: 52px;
-    width: 100%;
-    font-size: 1rem;
-  }
-
-  .hero-visual {
-    min-height: auto;
-    padding: 16px;
-  }
-
-  .hero-photo-wrap {
-    width: min(100%, 320px);
-  }
-
-  .stat-top {
-    top: 10px;
-    left: 10px;
-  }
-
-  .stat-bottom {
-    bottom: 10px;
-    right: 10px;
-  }
-
-  .gallery-grid,
-  .social-grid {
-    gap: 12px;
-  }
-
-  .gallery-card {
-    min-height: 220px;
-  }
-
-  .social-card {
-    padding: 22px 18px;
-  }
-
-  .social-card .btn {
-    width: 100%;
-    min-height: 48px;
-    font-size: 1rem;
-  }
-
-  .sound-box {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .sound-btn {
-    width: 100%;
-    min-height: 54px;
-  }
-
-  .lightbox-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .video-card video,
-  video {
-    height: auto !important;
-    min-height: 220px;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .social-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-copy {
-    padding: 18px 14px;
-  }
-
-  h1 {
-    font-size: 1.9rem;
-  }
-
-  .video-card video,
-  video {
-    min-height: 200px;
-  }
-}>
+  <style>
     :root {
       --bg: #07111f;
       --bg-2: #0c1830;
@@ -291,8 +118,8 @@
     }
 
     .nav {
-      position: fixed; /* עכשיו התפריט זז עם הגלילה */
-      top: 58px; /* מתחת לבר העליון */
+      position: fixed;
+      top: 58px;
       left: 0;
       right: 0;
       z-index: 30;
@@ -593,6 +420,23 @@
       font-size: 1.05rem;
     }
 
+    .video-card {
+      margin-top: 20px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      box-shadow: var(--shadow);
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      background: #000;
+    }
+
     section { padding: 22px 0; }
 
     .section-head {
@@ -889,8 +733,6 @@
       text-align: center;
     }
 
-    
-
     .hero-copy,
     .hero-visual,
     .fact-card,
@@ -936,11 +778,6 @@
     @keyframes spinSlow {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
-    }
-
-    @keyframes spinReverse {
-      0% { transform: rotate(360deg); }
-      100% { transform: rotate(0deg); }
     }
 
     @keyframes pulseOrb {
@@ -1075,7 +912,40 @@
         min-height: 54px;
       }
 
+      .video-card video,
+      video {
+        height: auto !important;
+        min-height: 220px;
+      }
+
       .lightbox-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        overflow-x: hidden;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 18px 14px;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      .video-card video,
+      video {
+        min-height: 200px;
+      }
     }
   </style>
 </head>
@@ -1120,8 +990,7 @@
             <span class="glow-title" data-text="שבוטה">("שבוטה")</span>
           </h1>
           <p class="lead">
-            עמוד מעריצים מעוצב בעברית על שבוטה, עם גלריית תמונות, רשתות חברתיות, ותקציר נקי של פרטים שחוזרים בדף
-            הסאטירי שנשלח. 
+            ליאור סורין, הידוע בכינוי "שבוטה", הוא יוצר תוכן ישראלי הפעיל בעיקר בטיקטוק, יוטיוב ואינסטגרם.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary btn-network" href="https://www.tiktok.com/@mrmistarshabota" target="_blank" rel="noopener noreferrer">טיקטוק</a>
@@ -1130,16 +999,9 @@
             <a class="btn btn-secondary" href="#gallery">לגלריה</a>
           </div>
 
-          <!-- קטע וידאו ככרטיס לחיץ בלי embed חיצוני -->
-          <div style="margin-top:20px; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.05); box-shadow:var(--shadow);">
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              poster="https://i.ibb.co/SX6HkpD1/image.jpg"
-              style="width:100%; height:320px; object-fit:cover; display:block; background:#000;"
-            >
-              <source src="ssstik.io_1774138473387.mp4" type="video/mp4" />
+          <div class="video-card">
+            <video controls playsinline preload="metadata" poster="https://i.ibb.co/SX6HkpD1/image.jpg">
+              <source src="./ssstik.io_1774138473387.mp4" type="video/mp4" />
               הדפדפן לא תומך בניגון וידאו.
             </video>
             <div style="padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
@@ -1157,11 +1019,11 @@
             <div class="hero-ring"></div>
             <img class="hero-photo" src="https://i.ibb.co/r2yZ69Dk/2026-02-26-205200.png" alt="שבוטה" />
             <div class="hero-stat glass stat-top">
-              <span class="stat-label">תחילת פעילות לפי הדף</span>
+              <span class="stat-label">תחילת פעילות</span>
               <span class="stat-value">2018</span>
             </div>
             <div class="hero-stat glass stat-bottom">
-              <span class="stat-label">סוגי תוכן שמופיעים במקור</span>
+              <span class="stat-label">פלטפורמות</span>
               <span class="stat-value">טיקטוק, יוטיוב, גיימינג</span>
             </div>
           </div>
@@ -1174,7 +1036,7 @@
         <div>
           <h2 class="section-title">אודות</h2>
           <p class="section-sub">
-            ליאור סורין, הידוע בכינוי "שבוטה", הוא יוצר תוכן ישראלי הפעיל בעיקר בטיקטוק, יוטיוב ואינסטגרם.
+            ליאור משתמש ברשתות החברתיות כדי לבטא את עצמו, לשתף את החיים שלו ולהתחבר לקהל רחב.
           </p>
         </div>
       </div>
@@ -1183,7 +1045,7 @@
         <article class="fact-card glass">
           <span class="fact-kicker">רקע</span>
           <h3>יוצר תוכן</h3>
-          <p>ליאור משתמש ברשתות החברתיות כדי לבטא את עצמו, לשתף את החיים שלו ולהתחבר לקהל רחב.</p>
+          <p>ליאור פעיל בעיקר בטיקטוק, יוטיוב ואינסטגרם ומעלה תוכן אישי ובידורי.</p>
         </article>
 
         <article class="fact-card glass">
@@ -1204,7 +1066,7 @@
       <div class="section-head">
         <div>
           <h2 class="section-title">ציר זמן</h2>
-          <p class="section-sub">הנה תקציר נקי של הדברים שאפשר לקחת מהערך בלי להכניס את כל החלקים הטרוליים והמוגזמים.</p>
+          <p class="section-sub">תקציר קצר ונקי של ההתפתחות שלו ברשת.</p>
         </div>
       </div>
 
@@ -1213,7 +1075,7 @@
           <div class="timeline-year">2018</div>
           <div>
             <h3>כניסה לטיקטוק</h3>
-            <p>הערך מציין שבשנה הזאת התחילה פעילות בטיקטוק. בנוסף הוא קושר את התקופה הזאת גם לעלייה בחשיפה ולמפגשי מעריצים.</p>
+            <p>תחילת פעילות בטיקטוק ובניית קהל.</p>
           </div>
         </article>
 
@@ -1221,23 +1083,23 @@
           <div class="timeline-year">2019–2021</div>
           <div>
             <h3>גיימינג, ולוגים ושירים</h3>
-            <p>לפי הדף, בשנים האלה פורסמו משחקי פיפא, ולוגים, קטעי קלאש רויאל וגם שירים שמוזכרים בשם בערך, כולל "שבותה" ו"ככה זה".</p>
+            <p>תוכן בידורי, משחקים, קטעי וידאו ושירים.</p>
           </div>
         </article>
 
         <article class="timeline-item glass">
           <div class="timeline-year">2022</div>
           <div>
-            <h3>תוכן סביב כדורגל</h3>
-            <p>בדף יש תיאור של מעבר לתוכן שמזוהה עם כדורגל וסקילים, לצד העלאות נוספות לערוץ היוטיוב.</p>
+            <h3>הרחבת התוכן</h3>
+            <p>המשך פעילות ביוטיוב וברשתות עם עוד סרטונים ותוכן מגוון.</p>
           </div>
         </article>
 
         <article class="timeline-item glass">
-          <div class="timeline-year">2023</div>
+          <div class="timeline-year">2023+</div>
           <div>
-            <h3>באולינג, כושר ומפגשים</h3>
-            <p>החלקים הסבירים יותר בערך מזכירים מפגשי מעריצים בבאולינג, תיעוד של מפגשים ברחוב וגם תוכן שקשור לכושר.</p>
+            <h3>קהל ונוכחות ברשת</h3>
+            <p>המשך הופעות, תוכן אישי וחיבור לקהילה ולעוקבים.</p>
           </div>
         </article>
       </div>
@@ -1321,7 +1183,7 @@
   </main>
 
   <footer>
-    נבנה בעברית מלאה, עם עיצוב משודרג, גלריה ותוכן מסונן מהמקור.
+    נבנה בעברית מלאה, עם עיצוב משודרג, גלריה ונגן וידאו.
   </footer>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
@@ -1339,7 +1201,6 @@
   </div>
 
   <script>
-    // כפתור סאונד דמו
     const soundBtn = document.getElementById('soundBtn');
     const soundStatus = document.getElementById('soundStatus');
 
@@ -1367,12 +1228,11 @@
       oscillator.start();
       oscillator.stop(ctx.currentTime + 0.36);
 
-      soundStatus.textContent = 'נוגן סאונד דמו. אפשר להחליף אחר כך לקובץ MP3 אמיתי.';
+      soundStatus.textContent = 'נוגן סאונד דמו.';
     }
 
     soundBtn.addEventListener('click', playDemoTone);
 
-    // גלריה + לייטבוקס
     const galleryItems = Array.from(document.querySelectorAll('.gallery-card'));
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
@@ -1430,50 +1290,23 @@
       if (event.key === 'ArrowRight') showPrev();
     });
 
-    // תפריט יורד/עולה בגלילה
     let lastScroll = 0;
     const nav = document.querySelector('.nav');
 
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
-
       if (currentScroll > lastScroll && currentScroll > 100) {
-        nav.style.transform = 'translateY(-100%)'; // נעלם
+        nav.style.transform = 'translateY(-100%)';
       } else {
-        nav.style.transform = 'translateY(0)'; // חוזר
+        nav.style.transform = 'translateY(0)';
       }
-
       lastScroll = currentScroll;
     });
 
-    // אנימציה עדינה בגלילה
-    const animatedItems = document.querySelectorAll('.fact-card, .timeline-item, .gallery-card, .social-card, .card, .hero-copy, .hero-visual');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.12 });
-
-    animatedItems.forEach((item) => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(24px)';
-      item.style.transition = 'opacity .7s ease, transform .7s ease';
-      observer.observe(item);
-    });
-
-    // מסך פתיחה קצר מאוד שלא הורס את החוויה
-    
-
-    // בדיקות בסיסיות כדי לתפוס תקלות מהר
-    (() => {
-            console.assert(!!document.getElementById('galleryGrid'), 'Missing #galleryGrid');
-      console.assert(galleryItems.length > 0, 'Gallery should contain at least one image');
-      console.assert(!!soundBtn, 'Missing sound button');
-      console.assert(!!lightbox && !!lightboxImage, 'Lightbox elements are missing');
-    })();
+    console.assert(!!document.getElementById('galleryGrid'), 'Missing #galleryGrid');
+    console.assert(galleryItems.length > 0, 'Gallery should contain at least one image');
+    console.assert(!!soundBtn, 'Missing sound button');
+    console.assert(!!lightbox && !!lightboxImage, 'Lightbox elements are missing');
   </script>
 </body>
 </html>
