@@ -118,12 +118,15 @@
     }
 
     .nav {
-      position: sticky;
-      top: 78px;
+      position: fixed; /* עכשיו התפריט זז עם הגלילה */
+      top: 58px; /* מתחת לבר העליון */
+      left: 0;
+      right: 0;
       z-index: 30;
-      background: rgba(3, 8, 17, 0.72);
+      background: rgba(3, 8, 17, 0.85);
       border-bottom: 1px solid rgba(255,255,255,0.08);
       backdrop-filter: blur(14px);
+      transition: transform 0.3s ease;
     }
 
     .nav-inner {
@@ -934,7 +937,7 @@
     </div>
   </nav>
 
-  <main class="container">
+  <main class="container" style="margin-top:140px;">
     <section class="hero" id="home">
       <div class="hero-grid">
         <div class="hero-copy glass">
@@ -952,6 +955,27 @@
             <a class="btn btn-secondary btn-network" href="https://www.instagram.com/liormastershabota/" target="_blank" rel="noopener noreferrer">אינסטגרם</a>
             <a class="btn btn-secondary btn-network" href="https://www.youtube.com/@Shabota2026" target="_blank" rel="noopener noreferrer">יוטיוב</a>
             <a class="btn btn-secondary" href="#gallery">לגלריה</a>
+          </div>
+
+          <!-- קטע וידאו ככרטיס לחיץ בלי embed חיצוני -->
+          <div style="margin-top:20px; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.05); box-shadow:var(--shadow);">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="https://i.ibb.co/SX6HkpD1/image.jpg"
+              style="width:100%; height:320px; object-fit:cover; display:block; background:#000;"
+            >
+              <source src="ssstik.io_1774138473387.mp4" type="video/mp4" />
+              הדפדפן לא תומך בניגון וידאו.
+            </video>
+            <div style="padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+              <div>
+                <div style="font-weight:800; color:var(--text); margin-bottom:6px;">נגן וידאו בתוך האתר</div>
+                <div style="color:var(--muted); font-size:.96rem;">לחיצה על Play תנגן את הסרטון כאן בתוך האתר.</div>
+              </div>
+              <a class="btn btn-primary" href="https://www.tiktok.com/@mrmistarshabota/video/7592264654773046536" target="_blank" rel="noopener noreferrer">פתח בטיקטוק</a>
+            </div>
           </div>
         </div>
 
@@ -977,27 +1001,28 @@
         <div>
           <h2 class="section-title">אודות</h2>
           <p class="section-sub">
-            לפי הערך שנשלח, שבוטה מזוהה כיוצר תוכן עם פעילות ברשתות חברתיות, בעיקר טיקטוק ויוטיוב. בדף מתואר שהוא החל
-            לפרסם סרטונים בשנת 2018, ובהמשך העלה גם תוכן גיימינג, ולוגים, שירים וסרטונים עם קהל ועוקבים.
+            ליאור סורין, הידוע בכינוי "שבוטה", הוא יוצר תוכן ישראלי הפעיל בעיקר בטיקטוק, יוטיוב ואינסטגרם.
           </p>
         </div>
       </div>
 
       <div class="grid-3">
         <article class="fact-card glass">
-          <span class="fact-kicker">פעילות ראשונית</span>
-          <h3>תחילת הדרך</h3>
-          <p>בדף נכתב שבשנת 2018 התחילה העלאת סרטונים לטיקטוק, ובהמשך זה הוביל לחשיפה רחבה יותר ולבניית קהל.</p>
+          <span class="fact-kicker">רקע</span>
+          <h3>יוצר תוכן</h3>
+          <p>ליאור משתמש ברשתות החברתיות כדי לבטא את עצמו, לשתף את החיים שלו ולהתחבר לקהל רחב.</p>
         </article>
+
+        <article class="fact-card glass">
+          <span class="fact-kicker">פרסום</span>
+          <h3>שיר "שבוטה"</h3>
+          <p>השיר "שבוטה" הפך לאחד הדברים המזוהים איתו וצבר צפיות רבות ברשת.</p>
+        </article>
+
         <article class="fact-card glass">
           <span class="fact-kicker">תוכן</span>
-          <h3>מה מופיע בערך</h3>
-          <p>החלקים היותר נורמליים בערך מזכירים תוכן בידורי, גיימינג, סרטוני ולוג, מפגשי מעריצים ותוכן שמתפרסם בכמה פלטפורמות.</p>
-        </article>
-        <article class="fact-card glass">
-          <span class="fact-kicker">רשתות</span>
-          <h3>נוכחות דיגיטלית</h3>
-          <p>האתר שקישרת אליו מפנה גם לטיקטוק, אינסטגרם ויוטיוב, ולכן הוספתי כאן כרטיסים מסודרים עם קישורים ישירים לכל עמוד.</p>
+          <h3>מה הוא מעלה</h3>
+          <p>התוכן כולל סרטונים יומיומיים, מוזיקה, שיתופי פעולה והופעות מול קהל.</p>
         </article>
       </div>
     </section>
@@ -1230,6 +1255,22 @@
       if (event.key === 'Escape') closeLightbox();
       if (event.key === 'ArrowLeft') showNext();
       if (event.key === 'ArrowRight') showPrev();
+    });
+
+    // תפריט יורד/עולה בגלילה
+    let lastScroll = 0;
+    const nav = document.querySelector('.nav');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        nav.style.transform = 'translateY(-100%)'; // נעלם
+      } else {
+        nav.style.transform = 'translateY(0)'; // חוזר
+      }
+
+      lastScroll = currentScroll;
     });
 
     // אנימציה עדינה בגלילה
