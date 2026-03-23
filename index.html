@@ -201,14 +201,15 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(6,10,22,0.7);
+      background: linear-gradient(180deg, rgba(8,12,28,0.82), rgba(8,12,28,0.68));
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     }
 
     .nav-inner {
-      min-height: 72px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -224,12 +225,12 @@
     }
 
     .brand-badge {
-      width: 46px;
-      height: 46px;
-      border-radius: 15px;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 0 24px rgba(0,242,234,0.1), 0 0 24px rgba(255,0,80,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 0 26px rgba(0,242,234,0.12), 0 0 26px rgba(255,0,80,0.10);
       flex: 0 0 auto;
       animation: pulseBorder 4s ease-in-out infinite;
     }
@@ -243,11 +244,12 @@
 
     .nav-links a {
       color: var(--muted);
-      padding: 10px 14px;
+      padding: 10px 15px;
       border-radius: 999px;
       transition: 0.22s ease;
       position: relative;
       overflow: hidden;
+      border: 1px solid transparent;
     }
 
     .nav-links a::before {
@@ -264,6 +266,7 @@
     .nav-links a:hover {
       color: #fff;
       background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.08);
       box-shadow: 0 0 18px rgba(0,242,234,.08);
     }
 
@@ -284,10 +287,14 @@
     .gallery-card { border-radius: var(--radius); }
 
     .hero-copy {
-      padding: 30px;
+      padding: 34px;
       position: relative;
       overflow: hidden;
       animation: fadeUp .8s ease both;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05)),
+        radial-gradient(circle at top left, rgba(255,0,80,0.12), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(0,242,234,0.12), transparent 34%);
     }
 
     .hero-copy::before {
@@ -421,9 +428,13 @@
       overflow: hidden;
       display: grid;
       place-items: center;
-      padding: 18px;
+      padding: 22px;
       min-height: 100%;
       animation: fadeUp .9s ease both;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04)),
+        radial-gradient(circle at 20% 20%, rgba(0,242,234,.10), transparent 28%),
+        radial-gradient(circle at 80% 80%, rgba(255,0,80,.10), transparent 28%);
     }
 
     .hero-visual::before,
@@ -455,7 +466,7 @@
 
     .hero-photo-wrap {
       position: relative;
-      width: min(100%, 320px);
+      width: min(100%, 340px);
       animation: floatPhoto 4.5s ease-in-out infinite;
     }
 
@@ -475,8 +486,8 @@
       aspect-ratio: 3 / 4;
       object-fit: cover;
       border-radius: 30px;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 0 28px rgba(0,242,234,0.08), 0 20px 50px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 0 28px rgba(0,242,234,0.10), 0 26px 60px rgba(0,0,0,0.36);
     }
 
     .hero-float-card {
@@ -498,11 +509,12 @@
     .hero-float-card span { color: var(--muted); font-size: .84rem; }
 
     .video-card {
-      margin-top: 18px;
+      margin-top: 22px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.05);
       position: relative;
+      box-shadow: var(--shadow-strong);
     }
 
     .video-card::before {
@@ -516,7 +528,7 @@
 
     .video-card video {
       width: 100%;
-      height: 300px;
+      height: 320px;
       object-fit: cover;
       display: block;
       background: #000;
@@ -536,15 +548,18 @@
     .video-title {
       font-weight: 800;
       margin-bottom: 5px;
-      font-size: 1.03rem;
+      font-size: 1.05rem;
     }
 
     .video-sub { color: var(--muted); font-size: .95rem; }
 
     .social-panel {
-      margin-top: 14px;
-      padding: 20px;
+      margin-top: 18px;
+      padding: 22px;
       animation: fadeUp 1s ease both;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05)),
+        radial-gradient(circle at top right, rgba(139,92,246,0.08), transparent 25%);
     }
 
     .social-panel-top {
@@ -553,7 +568,7 @@
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .section-title {
@@ -567,18 +582,18 @@
     .social-links {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      gap: 14px;
     }
 
     .social-link {
-      min-height: 96px;
-      border-radius: 18px;
+      min-height: 108px;
+      border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.12);
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 6px;
-      padding: 16px;
+      padding: 18px;
       transition: .24s ease;
       box-shadow: 0 10px 24px rgba(0,0,0,0.18);
       position: relative;
@@ -597,16 +612,16 @@
     .social-link:hover::before { transform: translateX(120%); }
 
     .social-link:hover {
-      transform: translateY(-5px) scale(1.01);
+      transform: translateY(-6px) scale(1.015);
       box-shadow: var(--shadow-strong);
     }
 
     .social-link strong { font-size: 1.04rem; }
     .social-link span { color: rgba(255,255,255,0.78); font-size: .92rem; }
-    .social-link.tiktok { background: linear-gradient(135deg, rgba(0,242,234,0.18), rgba(255,0,80,0.2)); }
-    .social-link.instagram { background: linear-gradient(135deg, rgba(131,58,180,0.2), rgba(253,29,29,0.18), rgba(252,176,69,0.18)); }
-    .social-link.youtube { background: linear-gradient(135deg, rgba(255,45,32,0.22), rgba(255,255,255,0.05)); }
-    .social-link.gaming { background: linear-gradient(135deg, rgba(0,255,133,0.18), rgba(139,92,246,0.18)); }
+    .social-link.tiktok { background: linear-gradient(135deg, rgba(0,242,234,0.20), rgba(255,0,80,0.22)); }
+    .social-link.instagram { background: linear-gradient(135deg, rgba(131,58,180,0.22), rgba(253,29,29,0.18), rgba(252,176,69,0.18)); }
+    .social-link.youtube { background: linear-gradient(135deg, rgba(255,45,32,0.24), rgba(255,255,255,0.06)); }
+    .social-link.gaming { background: linear-gradient(135deg, rgba(0,255,133,0.20), rgba(139,92,246,0.20)); }
 
     section { padding: 18px 0; }
 
@@ -617,14 +632,14 @@
       margin: 0 0 18px;
     }
     .gallery-head {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       text-align: center;
     }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      gap: 14px;
     }
 
     .gallery-card {
@@ -632,13 +647,14 @@
       overflow: hidden;
       position: relative;
       cursor: pointer;
-      min-height: 230px;
-      border: 1px solid rgba(255,255,255,0.1);
+      min-height: 250px;
+      border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.04);
       box-shadow: var(--shadow);
       transform: translateY(18px);
       opacity: 0;
       animation: cardReveal .8s ease forwards;
+      border-radius: 22px;
     }
 
     .gallery-card:nth-child(2) { animation-delay: .08s; }
@@ -885,7 +901,7 @@
       .side-icons { display: none; }
       .ambient-orb { display: none; }
       body::before,
-      body::after { opacity: .18; }
+      body::after { opacity: .16; }
       .container {
         width: min(100% - 14px, var(--max));
       }
@@ -894,6 +910,9 @@
       }
       .hero {
         padding: 4px 0 12px;
+      }
+      .nav {
+        background: linear-gradient(180deg, rgba(8,12,28,0.9), rgba(8,12,28,0.76));
       }
       .nav-inner {
         min-height: auto;
@@ -928,7 +947,7 @@
         border-radius: 18px;
       }
       .hero-copy {
-        padding: 16px 12px;
+        padding: 18px 14px;
       }
       .hero-copy::before,
       .hero-copy::after,
@@ -938,14 +957,14 @@
         filter: blur(18px);
       }
       h1 {
-        font-size: 1.9rem;
+        font-size: 2rem;
         margin-bottom: 10px;
         text-align: center;
         line-height: 1.08;
       }
       .lead {
-        font-size: .92rem;
-        line-height: 1.6;
+        font-size: .94rem;
+        line-height: 1.62;
         text-align: center;
         max-width: none;
       }
@@ -960,7 +979,7 @@
       }
       .hero-stat {
         text-align: center;
-        padding: 11px 10px;
+        padding: 12px 10px;
       }
       .hero-stat strong {
         font-size: 1rem;
@@ -969,18 +988,18 @@
         font-size: .83rem;
       }
       .hero-visual {
-        padding: 10px;
+        padding: 12px;
         min-height: auto;
       }
       .hero-photo-wrap {
-        width: min(100%, 210px);
+        width: min(100%, 240px);
       }
       .hero-float-card { display: none; }
       .video-card {
-        margin-top: 14px;
+        margin-top: 16px;
       }
       .video-card video {
-        height: 210px;
+        height: 220px;
       }
       .video-info {
         padding: 12px;
@@ -990,21 +1009,21 @@
         gap: 10px;
       }
       .video-title {
-        font-size: .96rem;
+        font-size: .98rem;
       }
       .video-sub {
         font-size: .84rem;
         line-height: 1.45;
       }
       .social-panel {
-        padding: 14px 12px;
+        padding: 16px 12px;
       }
       .social-panel-top {
         margin-bottom: 12px;
       }
       .section-title {
         text-align: center;
-        font-size: 1.4rem;
+        font-size: 1.45rem;
       }
       .section-sub {
         text-align: center;
@@ -1014,10 +1033,10 @@
       .social-links,
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        gap: 10px;
       }
       .social-link {
-        min-height: 82px;
+        min-height: 88px;
         padding: 12px 10px;
         text-align: center;
         border-radius: 16px;
@@ -1032,8 +1051,8 @@
         margin-bottom: 10px;
       }
       .gallery-card {
-        min-height: 140px;
-        border-radius: 16px;
+        min-height: 150px;
+        border-radius: 18px;
       }
       .gallery-card::after {
         font-size: .68rem;
@@ -1063,9 +1082,9 @@
 
     @media (max-width: 520px) {
       .brand-badge {
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
       }
       .brand {
         gap: 8px;
@@ -1087,7 +1106,7 @@
         padding: 7px 10px;
       }
       h1 {
-        font-size: 1.55rem;
+        font-size: 1.65rem;
       }
       .lead {
         font-size: .84rem;
@@ -1096,13 +1115,13 @@
         padding: 14px 10px;
       }
       .hero-photo-wrap {
-        width: min(100%, 170px);
+        width: min(100%, 185px);
       }
       .hero-ring {
         inset: -10px;
       }
       .video-card video {
-        height: 170px;
+        height: 180px;
       }
       .video-title {
         font-size: .9rem;
@@ -1112,7 +1131,7 @@
       }
       .btn {
         width: 100%;
-        min-height: 40px;
+        min-height: 42px;
         font-size: .84rem;
         padding: 10px 12px;
       }
@@ -1126,7 +1145,7 @@
         grid-template-columns: 1fr 1fr;
       }
       .social-link {
-        min-height: 74px;
+        min-height: 78px;
         padding: 10px 8px;
       }
       .social-link strong {
@@ -1137,10 +1156,10 @@
       }
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 7px;
+        gap: 8px;
       }
       .gallery-card {
-        min-height: 108px;
+        min-height: 112px;
       }
       .gallery-card::after {
         font-size: .62rem;
